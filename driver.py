@@ -5,14 +5,15 @@ from get_affliate_links import *
 from keywordripper import *
 user = ""
 pwd = ""
-driver = webdriver.Chrome('chromedriver.exe')
+from webdriver_manager.chrome import ChromeDriverManager
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 def main():
     driver.get("https://www.amazon.in/")
     assert "Amazon" in driver.title
     # Loop through each keyword and enter it in the reader method
-    enter_keyword2(driver, ["RGB lights", "rgb led"])
+    enter_keyword(driver, ["air cooler", "symphony air cooler"])
     # get_affiliate_link(driver, "Sunding SD 548 B 14 Function Waterproof Bicycle Computer Odometer Speedometer")
     tearDown()
 

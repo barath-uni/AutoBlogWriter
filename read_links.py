@@ -1,3 +1,4 @@
+from re import T
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from store_file import *
@@ -8,6 +9,9 @@ import time
 
 
 def enter_keyword(webdriver, input_keyword_lines):
+    # webdriver.get("https://www.amazon.in/product-reviews/B083788D2Q/ref=acr_dp_hist_3?ie=UTF8&filterByStar=three_star&reviewerType=all_reviews#reviews-filter-bar")
+    
+    # get_all_review_containers(webdriver)
 
     for input_word in input_keyword_lines:
         print("-----------------------------------------")
@@ -16,18 +20,18 @@ def enter_keyword(webdriver, input_keyword_lines):
         search_bar = webdriver.find_element(By.ID, "twotabsearchtextbox")
         # Enter value
         search_bar.send_keys(input_word, Keys.ENTER)
-
         avg_reviews = webdriver.find_element(By.ID, "p_72/1318477031")
         avg_reviews.click()
         webdriver.execute_script("window.scrollTo(0, document.body.scrollHeight/3);")
         time.sleep(3)
         # Change between a-size-medium and a-size-base-plus
-        list_of_values = [title for title in WebDriverWait(webdriver, 50).until(
+        list_of_values = [title for title in WebDriverWait(webdriver, 5).until(
             EC.visibility_of_all_elements_located((By.CLASS_NAME, 'a-size-medium')))]
         print("BEFORE LIST OF VALUES")
-        # Multi select the links and store it in an array
-        print("LIST OF VALUES")
         print(list_of_values)
+        # Multi select the links and store it in an array
+        # print("LIST OF VALUES")
+        # print(list_of_values)
         list_of_links = []
         print("AFTER LIST OF VALUES")
         for links in list_of_values:
@@ -41,10 +45,12 @@ def enter_keyword(webdriver, input_keyword_lines):
             if output:
                 print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
                 break
+        print("WRITING TO FILEEEEEEE")
+        time.sleep(4)
         # If not parse these links and grab all the reviews
         write_links_to_file(output, input_word)
 
-
+    
 def grab_all_reviews(webdriver, list_of_links):
 
     list_of_reviews = []
@@ -54,22 +60,79 @@ def grab_all_reviews(webdriver, list_of_links):
         try:
             link_review_text = ""
             webdriver.get(link)
-            review_text_temp["title"] = webdriver.find_element(By.ID, "productTitle").text
-            review_text_temp["link"] = link
-            webdriver.find_element(By.CSS_SELECTOR, "a[data-hook='see-all-reviews-link-foot']").click()
-            # Get the actual review content
-            review_text_container = [title for title in WebDriverWait(webdriver, 50).until(
-                EC.visibility_of_all_elements_located((By.CLASS_NAME, 'review-text-content')))]
-            print(review_text_container)
-            for review_class_holder in review_text_container:
-                review_text = review_class_holder.find_element(By.TAG_NAME, 'span').text
-                if len(review_text.split()) > 20:
-                    link_review_text += review_text
-            print(len(link_review_text))
-            review_text_temp["reviews"] = link_review_text
-            # review_text_temp["aff_link"] = get_affiliate_link(webdriver, review_text_temp["title"])
-            list_of_reviews.append(review_text_temp)
-
+            review_count = webdriver.find_element(By.CSS_SELECTOR, "#acrCustomerReviewText").text
+            print("REVIEW COUNT")
+            print(review_count)
+            print("LINK")
+            print(link)
+            review_count = review_count.split(" ")[0].replace(',', '')
+            if int(review_count)>100:   
+                review_text_temp["title"] = webdriver.find_element(By.ID, "productTitle").text
+                review_text_temp["link"] = link
+                # #corePriceDisplay_desktop_feature_div > div.a-section.a-spacing-none.aok-align-center > span.a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay > span:nth-child(2) > span.a-price-whole
+                review_text_temp["price"] = WebDriverWait(webdriver, 5).until(
+                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "#corePriceDisplay_desktop_feature_div > div.a-section.a-spacing-none.aok-align-center > span.a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay > span:nth-child(2) > span.a-price-whole")))[0].text
+                table_val = WebDriverWait(webdriver, 5).until(
+                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '#poExpander > div.a-expander-content.a-expander-partial-collapse-content > div > table')))
+                print(table_val)
+                # #poExpander > div.a-expander-content.a-expander-partial-collapse-content.a-expander-content-expanded > div > table
+                review_text_temp["review_count"] = review_count
+                review_text_temp["table"] = table_val[0].get_attribute('innerHTML')
+                print("TABLEE")
+                print(review_text_temp["table"])
+                review_text_temp["description"] = webdriver.find_element(By.CSS_SELECTOR, "#feature-bullets > ul").text
+                webdriver.find_element(By.CSS_SELECTOR, "a[data-hook='see-all-reviews-link-foot']").click()
+                WebDriverWait(webdriver, 5).until(
+                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '#histogramTable > tbody > tr:nth-child(2) > td.aok-nowrap > span.a-size-base > a')))[0].click()
+                review_text_container = get_all_review_containers(webdriver)
+                for review_text in review_text_container:
+                    if len(review_text.split()) > 20:
+                        link_review_text += review_text
+                print(len(link_review_text))
+                review_text_temp["reviews"] = link_review_text
+                # review_text_temp["aff_link"] = get_affiliate_link(webdriver, review_text_temp["title"])
+                list_of_reviews.append(review_text_temp)
+            else:
+                print("REVIEWS NOT ENOUGH")
+            
         except Exception as e:
             print(f"No Reviews found! Skip this product - {e}")
     return list_of_reviews
+
+def get_all_review_containers(webdriver):
+    review_text_container = list()
+    times = 1
+    try:
+        while times<10:
+            # #customer_review-R1EKLYT8TBJ39Y > div:nth-child(5) > span:nth-child(1)
+            # Get the actual review content
+            
+            try:
+                review_texts = WebDriverWait(webdriver, 5).until(
+                EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "span[data-hook='review-body']")))
+                if review_texts[0].text not in review_text_container:
+                    review_text_container += [title.text for title in review_texts]
+            except Exception as e:
+                print("STUCK WHILE FETCHING THE DATA")
+            
+            attempt = 1
+            success = False
+            while attempt<=3:
+                try:
+                    next_page = WebDriverWait(webdriver, 5).until(
+                        EC.visibility_of_all_elements_located((By.CSS_SELECTOR,'#cm_cr-pagination_bar > ul > li.a-last')))[0]
+                    next_page.click()
+                    success = True
+                except Exception as e:
+                    print(e)
+                    attempt+= 1
+                if success:
+                    break
+            print("LOOP")
+            times += 1
+    except Exception as e:
+        print("LAST PAGE HIT")
+        print(e)
+    print("VALUE AT THE END")
+    print(review_text_container)
+    return review_text_container

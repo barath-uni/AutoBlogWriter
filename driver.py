@@ -13,7 +13,10 @@ def main():
     driver.get("https://www.amazon.in/")
     assert "Amazon" in driver.title
     # Loop through each keyword and enter it in the reader method
-    enter_keyword(driver, ["portable air coolers", "window air cooler", "mini air cooler", "desert air cooler", "silent air cooler", "tower air cooler"])
+    enter_keyword(driver, ["mini air cooler", "desert air cooler", "silent air cooler",
+     "tower air cooler", "Symphony air coolers","air coolers dyson",
+     "Bajaj air coolers", "Usha air coolers", "Havells air coolers", "Hindware air coolers", "KenStar air coolers", "artic air coolers"])  
+    # "portable air coolers" "window air cooler", 
     # get_affiliate_link(driver, "Sunding SD 548 B 14 Function Waterproof Bicycle Computer Odometer Speedometer")
     tearDown()
 

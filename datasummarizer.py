@@ -15,6 +15,7 @@ def DataSummarizer(content):
     # Object of web scraping.
     # web_scrape = WebScraping()
     # Web-scraping.
+    file = content.replace(":",".")
     tokens_input = tokenizer.encode("summarize: "+file, return_tensors='pt', max_length=512, truncation=True)
     ids = model.generate(tokens_input, min_length=120, max_length=600)
     summary = tokenizer.decode(ids[0], skip_special_tokens=True)

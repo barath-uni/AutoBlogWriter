@@ -1,10 +1,12 @@
 from datasummarizer import DataSummarizer
 
 def write_links_to_file(list_of_links, file_name):
+    print("INTERESTING")
     f = open("output/{}.html".format(file_name), "w")
     fileheader = "<html><head></head><body>\n"
     fileclosing = "</body></html>\n"
     for dicti in list_of_links:
+        print(dicti)
         dictionary = clean_dictionary(dicti)
         # Read the link, title and reviews and write to a file
         # str(dictionary["aff_link"].encode('ascii', 'ignore')
@@ -12,7 +14,11 @@ def write_links_to_file(list_of_links, file_name):
         fileheader += f"<p>Check out the product <a href=\"{dictionary['link']}\"> here</a></p>\n"
         fileheader += f"<p>Price {dictionary['price']} here</p>\n"
         fileheader += f"TABLE \n <table>{dictionary['table']}</table>\n"
-        fileheader += f"<p>Description = {dictionary['description']}</p>\n"
+        try:
+            description = DataSummarizer(str(dictionary['description'].encode('ascii', 'ignore')))
+        except Exception as e:
+            description = dictionary['description']
+        fileheader += f"<p>Description = {description}</p>\n"
 
         try:
             output = DataSummarizer(str(dictionary["reviews"].encode('ascii', 'ignore')))

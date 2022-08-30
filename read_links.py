@@ -43,20 +43,19 @@ def enter_keyword(webdriver, input_keyword_lines):
             SystemExit("List of links is empty")
         print("LIST OF LINKS")
         print(list_of_links)
-        while True:
-            output = grab_all_reviews(webdriver, list_of_links)
-            if output:
-                print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
-                break
-        print("WRITING TO FILEEEEEEE")
+        output = grab_all_reviews(webdriver, list_of_links)
+        if output:
+            print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
+            write_links_to_file(output, input_word)
+        else:
+            print("NO OUTPUT RECEIVED, SKIP this product")
         # If not parse these links and grab all the reviews
-        write_links_to_file(output, input_word)
-
+        break
     
 def grab_all_reviews(webdriver, list_of_links):
 
     list_of_reviews = []
-    for link in list_of_links:
+    for link in list_of_links[:3]:
         print("LINKK")
         print(link)
         review_text_temp = {}
@@ -65,29 +64,31 @@ def grab_all_reviews(webdriver, list_of_links):
             link_review_text = ""
             webdriver.get(link)
             review_count = webdriver.find_element(By.CSS_SELECTOR, "#acrCustomerReviewText").text
-            print("REVIEW COUNT")
-            print(review_count)
-            print("LINK")
-            print(link)
             review_count = review_count.split(" ")[0].replace(',', '')
             if int(review_count)>1:   
                 review_text_temp["title"] = webdriver.find_element(By.ID, "productTitle").text
                 print(review_text_temp["title"])
                 review_text_temp["link"] = link
+                review_text_temp["img_link"] = WebDriverWait(webdriver, 15).until(EC.visibility_of_all_elements_located((By.ID, "landingImage")))[0].get_attribute("src")
+                print(review_text_temp["img_link"])
                 # #corePriceDisplay_desktop_feature_div > div.a-section.a-spacing-none.aok-align-center > span.a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay > span:nth-child(2) > span.a-price-whole
                 # span.a-price:nth-child(2) > span:nth-child(2) > span:nth-child(2)
                 review_text_temp["price"] = WebDriverWait(webdriver, 15).until(
                     EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "#corePriceDisplay_desktop_feature_div > div.a-section.a-spacing-none.aok-align-center > span.a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay > span:nth-child(2) > span.a-price-whole")))[0].text
-                print(review_text_temp["price"])
-                table_val = WebDriverWait(webdriver, 5).until(
-                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '#poExpander > div.a-expander-content.a-expander-partial-collapse-content > div > table')))
-                print(table_val)
-                # #poExpander > div.a-expander-content.a-expander-partial-collapse-content.a-expander-content-expanded > div > table
                 review_text_temp["review_count"] = review_count
-                review_text_temp["table"] = table_val[0].get_attribute('innerHTML')
+                print(review_text_temp["price"])
                 webdriver.execute_script("window.scrollTo(0, document.body.scrollHeight/6);")
-                print("TABLEE")
-                print(review_text_temp["table"])
+                try:
+                    table_val = WebDriverWait(webdriver, 15).until(
+                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '#poExpander > div.a-expander-content.a-expander-partial-collapse-content > div > table')))
+                    # #poExpander > div.a-expander-content.a-expander-partial-collapse-content.a-expander-content-expanded > div > table
+                    review_text_temp["table"] = table_val[0].get_attribute('innerHTML')
+                    print("TABLEE")
+                    print(review_text_temp["table"])
+                except Exception as e:
+                    print("EXCEPTION WHILE TRYING TO CAPTURE TABLE")
+                    print(e)
+                    review_text_temp["table"] = "<table></table>"
                 review_text_temp["description"] = webdriver.find_element(By.CSS_SELECTOR, "#feature-bullets > ul").text
                 webdriver.execute_script("window.scrollTo(0, document.body.scrollHeight/4);")
                 webdriver.find_element(By.CSS_SELECTOR, "a[data-hook='see-all-reviews-link-foot']").click()

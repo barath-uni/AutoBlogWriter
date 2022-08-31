@@ -55,7 +55,7 @@ def enter_keyword(webdriver, input_keyword_lines):
 def grab_all_reviews(webdriver, list_of_links):
 
     list_of_reviews = []
-    for link in list_of_links[:3]:
+    for link in list_of_links:
         print("LINKK")
         print(link)
         review_text_temp = {}
@@ -79,8 +79,9 @@ def grab_all_reviews(webdriver, list_of_links):
                 print(review_text_temp["price"])
                 webdriver.execute_script("window.scrollTo(0, document.body.scrollHeight/6);")
                 try:
+                    # #productOverview_feature_div > div > table
                     table_val = WebDriverWait(webdriver, 15).until(
-                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '#poExpander > div.a-expander-content.a-expander-partial-collapse-content > div > table')))
+                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '#productOverview_feature_div > div > table')))
                     # #poExpander > div.a-expander-content.a-expander-partial-collapse-content.a-expander-content-expanded > div > table
                     review_text_temp["table"] = table_val[0].get_attribute('innerHTML')
                     print("TABLEE")
@@ -89,7 +90,8 @@ def grab_all_reviews(webdriver, list_of_links):
                     print("EXCEPTION WHILE TRYING TO CAPTURE TABLE")
                     print(e)
                     review_text_temp["table"] = "<table></table>"
-                review_text_temp["description"] = webdriver.find_element(By.CSS_SELECTOR, "#feature-bullets > ul").text
+                review_text_temp["description"] = WebDriverWait(webdriver, 15).until(
+                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "#feature-bullets > ul")))[0].text
                 webdriver.execute_script("window.scrollTo(0, document.body.scrollHeight/4);")
                 webdriver.find_element(By.CSS_SELECTOR, "a[data-hook='see-all-reviews-link-foot']").click()
                 WebDriverWait(webdriver, 5).until(

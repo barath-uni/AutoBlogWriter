@@ -15,6 +15,6 @@ def get_ext(url):
 
 def download_image(image_url, location):
     urllib.request.urlretrieve(image_url, Path(f"{location}{get_ext(image_url)}"))
-
+    return get_ext(image_url)
 # get_ext("https://m.media-amazon.com/images/I/51Po1SCgSGL._SX425_.jpg")
 # download_image("https://m.media-amazon.com/images/I/51Po1SCgSGL._SX425_.jpg", Path("images/", "Symphony Ice Cube 27"))

@@ -50,7 +50,6 @@ def enter_keyword(webdriver, input_keyword_lines):
         else:
             print("NO OUTPUT RECEIVED, SKIP this product")
         # If not parse these links and grab all the reviews
-        break
     
 def grab_all_reviews(webdriver, list_of_links):
 

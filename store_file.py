@@ -2,7 +2,7 @@ from datasummarizer import DataSummarizer
 from ImageStripper import download_image
 from pathlib import Path
 LOCAL_IMAGE_PATH = Path("output/images")
-RELATIVE_IMAGE_PATH = Path("images")
+RELATIVE_IMAGE_PATH = Path("assets/images/posts")
 def write_links_to_file(list_of_links, file_name):
     f = open("output/{}.html".format(file_name), "w")
     fileheader = "<html><head></head><body>\n"
@@ -10,6 +10,7 @@ def write_links_to_file(list_of_links, file_name):
     for dicti in list_of_links:
         dictionary = clean_dictionary(dicti)
         name = dictionary['title']
+        name = name.replace(" ","%20")
         img_local_path = Path(RELATIVE_IMAGE_PATH, name)
         print(img_local_path)
         # Read the link, title and reviews and write to a file
@@ -19,9 +20,9 @@ def write_links_to_file(list_of_links, file_name):
         fileheader += f"<p>Price {dictionary['price']} here</p>\n"
         fileheader += f"TABLE \n <table>{dictionary['table']}</table>\n"
         try:
-            download_image(dictionary['img_link'], Path(LOCAL_IMAGE_PATH, name))
+            exte = download_image(dictionary['img_link'], Path(LOCAL_IMAGE_PATH, name))
             # Neccessarily add a download and extract section here
-            fileheader += f"<img src='{img_local_path}' alt='product image'> \n"
+            fileheader += f"<img src='@@baseUrl@@/{img_local_path}{exte}' alt='product image'> \n"
         except:
             print("Exception during downloading the image")
         try:

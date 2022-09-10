@@ -5,8 +5,10 @@ LOCAL_IMAGE_PATH = Path("output/images")
 RELATIVE_IMAGE_PATH = Path("assets/images/posts")
 def write_links_to_file(list_of_links, file_name):
     f = open("output/{}.html".format(file_name), "w")
-    fileheader = "<html><head></head><body>\n"
-    fileclosing = "</body></html>\n"
+    # fileheader = "<html><head></head><body>\n"
+    # fileclosing = "</body></html>\n"
+    fileheader = "<div>"
+    fileclosing = "</div>"
     for dicti in list_of_links:
         dictionary = clean_dictionary(dicti)
         name = dictionary['title']
@@ -22,7 +24,7 @@ def write_links_to_file(list_of_links, file_name):
         try:
             exte = download_image(dictionary['img_link'], Path(LOCAL_IMAGE_PATH, name))
             # Neccessarily add a download and extract section here
-            fileheader += f"<img src='@@baseUrl@@/{img_local_path}{exte}' alt='product image'> \n"
+            fileheader += f"<img class='object-cover object-center rounded' src='/{img_local_path}{exte}' alt='product image'> \n"
         except:
             print("Exception during downloading the image")
         try:
@@ -36,7 +38,7 @@ def write_links_to_file(list_of_links, file_name):
         except Exception as e:
             print(e)
             output = str(dictionary["reviews"].encode('ascii', 'ignore'))
-        fileheader += "<div>"+output+"</div>\n"
+        fileheader += "<p>"+output+"</p>\n"
 
     fileheader += fileclosing
 

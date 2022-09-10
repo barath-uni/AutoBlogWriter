@@ -14,6 +14,7 @@ def enter_keyword(webdriver, input_keyword_lines):
     # get_all_review_containers(webdriver)
 
     for input_word in input_keyword_lines:
+        start_time = time.time()
         print("-----------------------------------------")
         print(f"CURRENTLY FETCHING FOR THE KEYWORD = {input_word}")
         print("-----------------------------------------")
@@ -50,6 +51,9 @@ def enter_keyword(webdriver, input_keyword_lines):
         else:
             print("NO OUTPUT RECEIVED, SKIP this product")
         # If not parse these links and grab all the reviews
+        print("TOTAL TIME FOR ONE ITERATION=")
+        print(time.time()-start_time)
+        break
     
 def grab_all_reviews(webdriver, list_of_links):
 

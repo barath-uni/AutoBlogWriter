@@ -7,17 +7,29 @@ def write_links_to_file(list_of_links, file_name):
     f = open("output/{}.html".format(file_name), "w")
     # fileheader = "<html><head></head><body>\n"
     # fileclosing = "</body></html>\n"
-    fileheader = "<div>"
+    fileheader =    " --- \n"\
+                    "title: TITLE \n"\
+                    "description: basic \n"\
+                    "category: FILL \n"\
+                    "modified_date: TITLE \n"\
+                    "date: TITLE \n"\
+                    "image: https://dummyimage.com/1048x600 \n"\
+                    "---\n"
+    fileheader += "<div>"
     fileclosing = "</div>"
     for dicti in list_of_links:
         dictionary = clean_dictionary(dicti)
+        
+
         name = dictionary['title']
-        name = name.replace(" ","%20")
+        name = name.replace(" ","_")
         img_local_path = Path(RELATIVE_IMAGE_PATH, name)
         print(img_local_path)
         # Read the link, title and reviews and write to a file
         # str(dictionary["aff_link"].encode('ascii', 'ignore')
         fileheader += "<h3>"+dictionary['title']+"</h3>\n"
+        if dictionary.get('questions'):
+            fileheader += "<p>"+dictionary['questions']+"</p>"
         fileheader += f"<p>Check out the product <a href=\"{dictionary['link']}\"> here</a></p>\n"
         fileheader += f"<p>Price {dictionary['price']} here</p>\n"
         fileheader += f"TABLE \n <table>{dictionary['table']}</table>\n"

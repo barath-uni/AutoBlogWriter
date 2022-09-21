@@ -6,7 +6,8 @@ from get_affliate_links import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-
+import people_also_ask
+import json
 
 def enter_keyword(webdriver, input_keyword_lines):
     # webdriver.get("https://www.amazon.in/product-reviews/B083788D2Q/ref=acr_dp_hist_3?ie=UTF8&filterByStar=three_star&reviewerType=all_reviews#reviews-filter-bar")
@@ -35,6 +36,7 @@ def enter_keyword(webdriver, input_keyword_lines):
         # print(list_of_values)
         list_of_links = []
         print("AFTER LIST OF VALUES")
+        
         for links in list_of_values[1:]:
             link = links.find_element(By.XPATH, '..').get_attribute("href")
             print("LINK")
@@ -47,13 +49,15 @@ def enter_keyword(webdriver, input_keyword_lines):
         output = grab_all_reviews(webdriver, list_of_links)
         if output:
             print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
+            resp = people_also_ask.get_answer(input_word)
+            resp = json.dumps(resp)
+            output[0]['questions'] = resp
             write_links_to_file(output, input_word)
         else:
             print("NO OUTPUT RECEIVED, SKIP this product")
         # If not parse these links and grab all the reviews
         print("TOTAL TIME FOR ONE ITERATION=")
         print(time.time()-start_time)
-        break
     
 def grab_all_reviews(webdriver, list_of_links):
 

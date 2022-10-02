@@ -97,8 +97,13 @@ def grab_all_reviews(webdriver, list_of_links):
                     print("EXCEPTION WHILE TRYING TO CAPTURE TABLE")
                     print(e)
                     review_text_temp["table"] = "<table></table>"
-                review_text_temp["description"] = WebDriverWait(webdriver, 15).until(
-                    EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "#feature-bullets > ul")))[0].text
+                try:
+                    review_text_temp["description"] = WebDriverWait(webdriver, 15).until(
+                        EC.visibility_of_all_elements_located((By.CSS_SELECTOR, "#feature-bullets > ul")))[0].text
+                except Exception as e:
+                    print("WHILE FETCHING DESCRIPTION")
+                    print(e)
+                    review_text_temp["description"] = "Description empty"
                 webdriver.execute_script("window.scrollTo(0, document.body.scrollHeight/4);")
                 webdriver.find_element(By.CSS_SELECTOR, "a[data-hook='see-all-reviews-link-foot']").click()
                 WebDriverWait(webdriver, 5).until(

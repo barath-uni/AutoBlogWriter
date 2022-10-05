@@ -80,3 +80,37 @@ def clean_dictionary(dicti):
     dicti['title'] = clean_title
     # Heuristics to weed out unwanted products :TODO
     return dicti
+
+def write_gpt_content_to_file(dictionary:dict):
+  """
+  This function is responsible for writing a GPT content to a file. 
+  Just convert dict to an HTML file and write to OUT
+  Future changes, this should not be a separate flow, combine both the dictionaries into one file.
+  In each dictionary
+  1. Title
+  2. Content (h3, p) -> Has its own pipeline, Could be review content+gpt content+comparison Phrases+Pre-determined phrases etc
+  3. Hero image
+  4. Content images - Ideally a table comparison image, etc
+  5. Dall-e Images to plug in-between content 
+  """
+  for dict_key in dictionary.keys():
+    file_name = f"gpt_content_{dict_key[:10].replace(' ', '_')}"
+    f = open("output/{}.html".format(file_name), "w")
+      # fileheader = "<html><head></head><body>\n"
+      # fileclosing = "</body></html>\n"
+    fileheader =    " --- \n"\
+                    "title: TITLE \n"\
+                    "description: basic \n"\
+                    "category: FILL \n"\
+                    "modified_date: TITLE \n"\
+                    "date: TITLE \n"\
+                    "image: https://dummyimage.com/1048x600 \n"\
+                    "---\n"
+    fileheader += "<div>"
+    fileheader += f"\n<h1>{dict_key}</h1>"
+    fileclosing = "</div>"
+    for section in dictionary[dict_key]:
+      fileheader += f"<h3>{section}</h3>"
+      fileheader += f"<p>{dictionary[dict_key][section]}</p>"
+    fileheader += fileclosing
+    f.write(fileheader)

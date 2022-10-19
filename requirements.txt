@@ -1,1 +1,2 @@
-django-tinymce
+min-dalle
+diffusers==0.4.0 transformers scipy ftfy

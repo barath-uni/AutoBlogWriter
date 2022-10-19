@@ -5,6 +5,9 @@ from regex import B
 import openai
 import re
 import time
+from pathlib import Path
+
+GPT_STORAGE_DIRECTORY = Path("gpt_content_store")
 def split(s):
     s = re.sub(r'(\d. \n)+', '', s)
     return re.split('\n', s, flags=re.IGNORECASE)
@@ -53,7 +56,7 @@ def blogSectionExpander(prompt1):
 
     return response['choices'][0]['text']
 
-def write_an_article(title):
+def write_an_article(title, variations=1):
   """
   Ideally, we should start with a title (Not keywords, but title) and build an intro + Section + Outro
   What this method does
@@ -65,27 +68,41 @@ def write_an_article(title):
   """
   
   blog_topics = generateBlogTopics(title)
+  blog_topics = [topic for topic in blog_topics if topic != '']
+  assert variations < 4, "Cannot get more than 4 variations at once."\
+                          "Will require a lot of GPT hours which we cannot afford"
+  blog_topics = blog_topics[:variations]
+  print("BLOG TOPICS SO FAR")
+  print(blog_topics)
   blog_article_dict = dict()
   # Test this later
   # Use common methods to break the topics into multiple sections
   start_time = time.time()
   for topic in blog_topics:
+    print(f"TOPICS = {topic}")
     # Only if length of the topic is greater than 10 characters
     if len(topic) > 10:
       get_sections = split(generateBlogSections(topic))
+      get_sections = [section for section in get_sections if section != '']
+      print(f"SECTIONS = {get_sections}")
       for section in get_sections:
-        if len(section) > 10:
-          expanded_section = blogSectionExpander(section)
-          if topic not in blog_article_dict.keys():
-            blog_article_dict[topic]= { section: expanded_section}
-          else:
-            blog_article_dict[topic].update(section, expanded_section)
-
+        expanded_section = blogSectionExpander(section)
+        if not blog_article_dict.get(topic, None):
+          blog_article_dict[topic]= {section: expanded_section}
+        else:
+          blog_article_dict[topic][section]= expanded_section
+  print(blog_article_dict)
+  if Path.exists(GPT_STORAGE_DIRECTORY/f'{title}_content_var_{variations}.json'):
+    storage_loc = GPT_STORAGE_DIRECTORY/f'{title}_2_content_var_{variations}.json'
+  else:
+    storage_loc = GPT_STORAGE_DIRECTORY/f'{title}_content_var_{variations}.json'
+  storage_path = Path(storage_loc)  
   # Save to a file so it stays there persistently
-  with open('GPT-writer-out.json', 'w') as f:
+  with open(storage_path, 'w') as f:
     json.dump(blog_article_dict, f)
   end_time = time.time() - start_time
   print(f"IT TOOK - {end_time}")
+  return storage_path
 
 if __name__ == "__main__":
     write_an_article('Tower air cooler for home in india')

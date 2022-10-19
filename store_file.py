@@ -1,6 +1,8 @@
+import json
 from datasummarizer import DataSummarizer
 from ImageStripper import download_image
 from pathlib import Path
+from stableDiffusionImageGenerator import create_hero_image
 LOCAL_IMAGE_PATH = Path("output/images")
 RELATIVE_IMAGE_PATH = Path("assets/images/posts")
 def write_links_to_file(list_of_links, file_name):
@@ -81,7 +83,11 @@ def clean_dictionary(dicti):
     # Heuristics to weed out unwanted products :TODO
     return dicti
 
-def write_gpt_content_to_file(dictionary:dict):
+
+def hero_image_prompt_builder(keyword):
+  return "Home setting, on the floor,"+keyword+", photo realistic,4K HD, high detail render, Emulating Reality ,f/ 4.2 , 250 mm lens,becoming the subject extreme wide shot, accurate features, high detailed light refraction, Emulating reality, high level texture render, low focus point"
+
+def write_gpt_content_to_file(keyword:str, json_file:Path):
   """
   This function is responsible for writing a GPT content to a file. 
   Just convert dict to an HTML file and write to OUT
@@ -93,7 +99,9 @@ def write_gpt_content_to_file(dictionary:dict):
   4. Content images - Ideally a table comparison image, etc
   5. Dall-e Images to plug in-between content 
   """
-  for dict_key in dictionary.keys():
+  with open(json_file, 'r') as f:
+    dictionary_val = json.load(f)
+  for dict_key in dictionary_val.keys():
     file_name = f"gpt_content_{dict_key[:10].replace(' ', '_')}"
     f = open("output/{}.html".format(file_name), "w")
       # fileheader = "<html><head></head><body>\n"
@@ -104,13 +112,13 @@ def write_gpt_content_to_file(dictionary:dict):
                     "category: FILL \n"\
                     "modified_date: TITLE \n"\
                     "date: TITLE \n"\
-                    "image: https://dummyimage.com/1048x600 \n"\
+                    f"image: {create_hero_image(hero_image_prompt_builder(keyword))} \n"\
                     "---\n"
     fileheader += "<div>"
     fileheader += f"\n<h1>{dict_key}</h1>"
     fileclosing = "</div>"
-    for section in dictionary[dict_key]:
+    for section in dictionary_val[dict_key]:
       fileheader += f"<h3>{section}</h3>"
-      fileheader += f"<p>{dictionary[dict_key][section]}</p>"
+      fileheader += f"<p>{dictionary_val[dict_key][section]}</p>"
     fileheader += fileclosing
     f.write(fileheader)

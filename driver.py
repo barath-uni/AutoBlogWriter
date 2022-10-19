@@ -10,7 +10,7 @@ pwd = ""
 from webdriver_manager.chrome import ChromeDriverManager
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
-
+print("THIS IS FROM DRIVER.py")
 def main():
     driver.get("https://www.amazon.in/")
     assert "Amazon" in driver.title

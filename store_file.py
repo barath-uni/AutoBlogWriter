@@ -2,7 +2,7 @@ import json
 from datasummarizer import DataSummarizer
 from ImageStripper import download_image
 from pathlib import Path
-from stableDiffusionImageGenerator import create_hero_image
+# from stableDiffusionImageGenerator import create_hero_image
 LOCAL_IMAGE_PATH = Path("output/images")
 RELATIVE_IMAGE_PATH = Path("assets/images/posts")
 def write_links_to_file(list_of_links, file_name):

@@ -9,7 +9,7 @@ pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", 
 pipe.to("cpu")
 
 def create_hero_image(prompt:str):
-    image = pipe(prompt, height=600, width=1080).images[0]
+    image = pipe(prompt, height=200, width=360).images[0]
     image.save(f"output/hero/{prompt.replace(' ', '_')}+.png")
     print(f"IT TOOK = {time.time()-start_time}")
     return f"output/hero/{prompt.replace(' ', '_')}+.png"

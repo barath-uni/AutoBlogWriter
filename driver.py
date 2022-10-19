@@ -8,15 +8,15 @@ from gpt_content_writer import write_an_article
 user = ""
 pwd = ""
 from webdriver_manager.chrome import ChromeDriverManager
-# driver = webdriver.Chrome(ChromeDriverManager().install())
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
 
 def main():
-    # driver.get("https://www.amazon.in/")
-    # assert "Amazon" in driver.title
+    driver.get("https://www.amazon.in/")
+    assert "Amazon" in driver.title
     # Loop through each keyword and enter it in the reader method
     # "window air cooler", "mini air cooler", "air coolers dyson"
-    # enter_keyword(driver, ["portable air coolers"])
+    enter_keyword(driver, ["portable air coolers"])
     # "tower air cooler", "window air cooler", "air coolers dyson"  
     # "silent air cooler", "tower air cooler", "window air cooler", "mini air cooler"
     #  "air coolers dyson",
@@ -24,7 +24,7 @@ def main():
     # "portable air coolers" "window air cooler", "mini air cooler", "desert air cooler"
     # get_affiliate_link(driver, "Sunding SD 548 B 14 Function Waterproof Bicycle Computer Odometer Speedometer")
     # "silent air cooler" "tower air cooler", 
-    # tearDown()
+    tearDown()
     # Get GPT Content
     start_time=time.time()
     file_path = write_an_article(title="portable air coolers", variations=1)

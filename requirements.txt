@@ -1,4 +1,7 @@
 selenium
 webdriver-manager
 people-also-ask
-diffusers==0.4.0 transformers scipy ftfy
+diffusers==0.4.0
+transformers
+scipy
+ftfy

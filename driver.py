@@ -26,10 +26,10 @@ def main():
     # "silent air cooler" "tower air cooler", 
     tearDown()
     # Get GPT Content
-    start_time=time.time()
-    file_path = write_an_article(title="portable air coolers", variations=1)
-    write_gpt_content_to_file("portable air cooler, realistic, with control panel",file_path)
-    print(f"IT TOOK IN TOTAL = {time.time()-start_time}")
+    # start_time=time.time()
+    # file_path = write_an_article(title="portable air coolers", variations=1)
+    # write_gpt_content_to_file("portable air cooler, realistic, with control panel",file_path)
+    # print(f"IT TOOK IN TOTAL = {time.time()-start_time}")
     
 def tearDown(): 
     driver.close()

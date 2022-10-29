@@ -1,4 +1,3 @@
-from numpy import var
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from read_links import *
@@ -10,30 +9,31 @@ pwd = ""
 from webdriver_manager.chrome import ChromeDriverManager
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
-print("THIS IS FROM DRIVER.py")
-def main():
-    driver.get("https://www.amazon.in/")
-    assert "Amazon" in driver.title
-    # Loop through each keyword and enter it in the reader method
-    # "window air cooler", "mini air cooler", "air coolers dyson"
-    enter_keyword(driver, ["portable air coolers"])
-    # "tower air cooler", "window air cooler", "air coolers dyson"  
-    # "silent air cooler", "tower air cooler", "window air cooler", "mini air cooler"
-    #  "air coolers dyson",
-    #  "Bajaj air coolers", "Usha air coolers", "Havells air coolers", "Hindware air coolers", "KenStar air coolers", "artic air coolers"
-    # "portable air coolers" "window air cooler", "mini air cooler", "desert air cooler"
-    # get_affiliate_link(driver, "Sunding SD 548 B 14 Function Waterproof Bicycle Computer Odometer Speedometer")
-    # "silent air cooler" "tower air cooler", 
+def main(values:list):
+    for value in values:
+        driver.get("https://www.amazon.in/")
+        assert "Amazon" in driver.title
+        # # Loop through each keyword and enter it in the reader method
+        enter_keyword(driver, [value])
+        # Get GPT Content
+        start_time=time.time()
+        file_path = write_an_article(title=value, variations=1)
+        write_gpt_content_to_file(f"{value}, air cooler with lcd controls, on the floor, photo realistic, 4K HD,near a window, few plants nearby, clean atmosphere",file_path)
+        print(f"IT TOOK IN TOTAL = {time.time()-start_time}")
     tearDown()
-    # Get GPT Content
-    # start_time=time.time()
-    # file_path = write_an_article(title="portable air coolers", variations=1)
-    # write_gpt_content_to_file("portable air cooler, realistic, with control panel",file_path)
-    # print(f"IT TOOK IN TOTAL = {time.time()-start_time}")
-    
+
 def tearDown(): 
     driver.close()
 
 
 if __name__ == "__main__":
-    main()
+    main(["symphony air cooler"])
+
+
+"""
+
+    For image
+"dyson air cooler", 
+    ["portable air cooler", "desert air cooler", "dyson air cooler", ""]
+
+"""

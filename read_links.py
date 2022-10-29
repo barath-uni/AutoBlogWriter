@@ -49,6 +49,7 @@ def enter_keyword(webdriver, input_keyword_lines):
         output = grab_all_reviews(webdriver, list_of_links)
         if output:
             print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
+            # TODO: Change the paa to get the correct answer
             resp = people_also_ask.get_answer(input_word)
             resp = json.dumps(resp)
             output[0]['questions'] = resp
@@ -111,8 +112,10 @@ def grab_all_reviews(webdriver, list_of_links):
                 review_text_container = get_all_review_containers(webdriver)
                 for review_text in review_text_container:
                     if len(review_text.split()) > 20:
-                        link_review_text += review_text
+                        link_review_text += review_text.replace('"','')+"."
                 print(len(link_review_text))
+                # Clean link_review text from b'' and B''
+                link_review_text = link_review_text.lower().replace("b''","")
                 review_text_temp["reviews"] = link_review_text
                 # review_text_temp["aff_link"] = get_affiliate_link(webdriver, review_text_temp["title"])
                 list_of_reviews.append(review_text_temp)

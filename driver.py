@@ -9,17 +9,17 @@ pwd = ""
 from webdriver_manager.chrome import ChromeDriverManager
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
-def main(values:list):
+def generate_affiliate_articles(values:list):
     for value in values:
         driver.get("https://www.amazon.in/")
         assert "Amazon" in driver.title
         # # Loop through each keyword and enter it in the reader method
         enter_keyword(driver, [value])
         # Get GPT Content
-        start_time=time.time()
-        file_path = write_an_article(title=value, variations=1)
-        write_gpt_content_to_file(f"{value}, air cooler with lcd controls, on the floor, photo realistic, 4K HD,near a window, few plants nearby, clean atmosphere",file_path)
-        print(f"IT TOOK IN TOTAL = {time.time()-start_time}")
+        # start_time=time.time()
+        # file_path = write_an_article(title=value, variations=1)
+        # write_gpt_content_to_file(f"{value}, air cooler with lcd controls, on the floor, photo realistic, 4K HD,near a window, few plants nearby, clean atmosphere",file_path)
+        # print(f"IT TOOK IN TOTAL = {time.time()-start_time}")
     tearDown()
 
 def tearDown(): 
@@ -27,7 +27,7 @@ def tearDown():
 
 
 if __name__ == "__main__":
-    main(["symphony air cooler"])
+    generate_affiliate_articles(["desert air cooler"])
 
 
 """

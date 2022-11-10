@@ -6,8 +6,8 @@ from get_affliate_links import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import people_also_ask
 import json
+from paascraper import get_list_of_ques_answer
 
 def enter_keyword(webdriver, input_keyword_lines):
     # webdriver.get("https://www.amazon.in/product-reviews/B083788D2Q/ref=acr_dp_hist_3?ie=UTF8&filterByStar=three_star&reviewerType=all_reviews#reviews-filter-bar")
@@ -50,8 +50,7 @@ def enter_keyword(webdriver, input_keyword_lines):
         if output:
             print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
             # TODO: Change the paa to get the correct answer
-            resp = people_also_ask.get_answer(input_word)
-            resp = json.dumps(resp)
+            resp = get_list_of_ques_answer(input_word)
             output[0]['questions'] = resp
             write_links_to_file(output, input_word)
         else:

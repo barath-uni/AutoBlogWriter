@@ -1,9 +1,9 @@
 import people_also_ask
 
-def get_list_of_ques_answer(ques):
+def get_list_of_ques_answer(ques, number):
     list_of_qa = list(dict())
 
-    questions = people_also_ask.get_related_questions(ques,10)
+    questions = people_also_ask.get_related_questions(ques,number)
 
     for question in questions:
         val = people_also_ask.get_simple_answer(question, depth=True)

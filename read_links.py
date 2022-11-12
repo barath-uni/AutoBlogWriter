@@ -50,8 +50,10 @@ def enter_keyword(webdriver, input_keyword_lines):
         if output:
             print("OUTPUT RECEIVED. INFINITYYYYYYYYYYY")
             # TODO: Change the paa to get the correct answer
-            resp = get_list_of_ques_answer(input_word)
-            output[0]['questions'] = resp
+            output_len = len(output)
+            resp = get_list_of_ques_answer(input_word, output_len)
+            for index in range(output_len):
+                output[index]['question'] = resp[index]
             write_links_to_file(output, input_word)
         else:
             print("NO OUTPUT RECEIVED, SKIP this product")

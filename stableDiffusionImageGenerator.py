@@ -3,6 +3,7 @@ from diffusers import StableDiffusionPipeline
 import torch
 import time
 from pathlib import Path
+import string
 import random
 start_time = time.time()
 my_token = "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"
@@ -17,6 +18,7 @@ def create_hero_image(prompt:str):
     pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", use_auth_token=my_token)
     pipe.to("cpu")
     image = pipe(prompt, height=600, width=1048).images[0]
+    id = id_generator()
     # image = pipe(prompt=prompt,image=img, mask_image=mask,strength=0.8).images[0]
     image.save(f"{Path(LOCAL_IMAGE_PATH, RELATIVE_IMAGE_PATH)}/{id}_{prompt.replace(' ', '_')[:8]}.png")
     print(f"IT TOOK = {time.time()-start_time}")

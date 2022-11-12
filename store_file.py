@@ -31,9 +31,9 @@ def write_links_to_file(list_of_links, file_name):
         
         fileheader += "<h3>"+dictionary['title']+"</h3>\n"
         if dictionary.get('questions'):
-            for val in dictionary['questions']:
-              fileheader += "<p>"+val.get('question')+"</p>"
-              fileheader += "<p>"+val.get('answer')+"</p>"
+            val = dictionary['questions']
+            fileheader += "<p>"+val.get('question')+"</p>"
+            fileheader += "<p>"+val.get('answer')+"</p>"
         fileheader += f"\n <table>{dictionary['table']}</table>\n"
         try:
             exte = download_image(dictionary['img_link'], Path(LOCAL_IMAGE_PATH, RELATIVE_IMAGE_PATH, name))

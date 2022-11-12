@@ -27,7 +27,7 @@ def tearDown():
 
 
 if __name__ == "__main__":
-    generate_affiliate_articles(["desert air cooler"])
+    generate_affiliate_articles(["tower air cooler", "mini evoporative air cooler", "dyson air cooler"])
 
 
 """

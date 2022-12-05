@@ -5,3 +5,5 @@ diffusers
 transformers
 scipy
 ftfy
+umap-learn
+hdbscan

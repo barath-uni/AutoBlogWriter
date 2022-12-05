@@ -1,8 +1,8 @@
 import json
-from datasummarizer import DataSummarizer
-from ImageStripper import download_image
+from AutoBlogWriter.gptgenerator.datasummarizer import DataSummarizer
+from AutoBlogWriter.pipeline.review.ImageStripper import download_image
 from pathlib import Path
-from stableDiffusionImageGenerator import create_hero_image
+from AutoBlogWriter.pipeline.imagegen.stableDiffusionImageGenerator import create_hero_image
 POST_WRITE_PATH=Path("/home/barath/codespace/coolerssstack/_posts")
 LOCAL_IMAGE_PATH = Path("/home/barath/codespace/coolerssstack/public")
 RELATIVE_IMAGE_PATH = Path("assets/images/posts")
@@ -16,7 +16,7 @@ def write_links_to_file(list_of_links, file_name):
                     "category: FILL \n"\
                     "modified_date: September 6, 2022 2:33 PM \n"\
                     "date: September 6, 2022 2:33 PM \n"\
-                    f"image: {create_hero_image(hero_image_prompt_builder(file_name))} \n"\
+                    f"image: {create_hero_image(hero_image_prompt_builder())} \n"\
                     "---\n"
     fileheader += "<div>"
     fileclosing = "</div>"
@@ -30,8 +30,8 @@ def write_links_to_file(list_of_links, file_name):
         print(img_local_path)
         
         fileheader += "<h3>"+dictionary['title']+"</h3>\n"
-        if dictionary.get('questions'):
-            val = dictionary['questions']
+        if dictionary.get('question'):
+            val = dictionary['question']
             fileheader += "<p>"+val.get('question')+"</p>"
             fileheader += "<p>"+val.get('answer')+"</p>"
         fileheader += f"\n <table>{dictionary['table']}</table>\n"
@@ -43,8 +43,8 @@ def write_links_to_file(list_of_links, file_name):
     "<div class='mx-auto flex flex-wrap border-a-8' id='ig8o'>"\
       f"<img alt='ecommerce' src='/{img_local_path}{exte}' alt='product image' rel='nofollow noopener sponsored' class='lg:w-1/2 w-full p-4 lg:h-auto h-64 object-cover object-center rounded'/>"\
       "<div class='lg:w-1/2 lg:pl-10 lg:py-6 mt-6 lg:mt-0'>"\
-        f"<h1 class='text-gray-900 text-xl p-2 title-font font-medium mb-1'>{dictionary['title']}"\
-        "</h1>"\
+        f"<h4 class='text-gray-900 text-xl p-2 title-font font-medium mb-1'>{dictionary['title']}"\
+        "</h4>"\
         "<form method='get' id='ixww' class='p-2'>"\
           f"<span class='title-font font-medium text-l p-2 text-gray-900'>₹ {dictionary['price']}</span>"\
           "<div class='flex'>"\
@@ -83,9 +83,9 @@ def clean_dictionary(dicti):
     return dicti
 
 
-def hero_image_prompt_builder(keyword):
+def hero_image_prompt_builder(keyword=""):
   #  high detail render, Emulating Reality ,f/ 4.2 , 250 mm lens,becoming the subject extreme wide shot, accurate features, high detailed light refraction, Emulating reality, high level texture render, low focus point
-  return keyword+"Home air cooler, on the floor, photo realistic,4K HD"
+  return f"{keyword}, Neat Home, with Sofa, air cooler, mat on the floor, photo realistic,4K HD, High Detail, accurate features, "
 
 def write_gpt_content_to_file(keyword:str, json_file:Path):
   """
@@ -112,7 +112,7 @@ def write_gpt_content_to_file(keyword:str, json_file:Path):
                     "category: FILL \n"\
                     "modified_date: September 6, 2022 2:33 PM \n"\
                     "date: September 6, 2022 2:33 PM \n"\
-                    f"image: {create_hero_image(hero_image_prompt_builder(keyword))} \n"\
+                    f"image: {create_hero_image(hero_image_prompt_builder())} \n"\
                     "---\n"
     fileheader += "<div>"
     fileheader += f"\n<h1>{dict_key}</h1>"

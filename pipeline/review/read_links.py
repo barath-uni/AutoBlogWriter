@@ -1,8 +1,8 @@
 from re import T
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from store_file import *
-from get_affliate_links import *
+from AutoBlogWriter.utils.store_file import *
+from AutoBlogWriter.pipeline.review.get_affliate_links import *
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time

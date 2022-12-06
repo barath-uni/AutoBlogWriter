@@ -49,7 +49,7 @@ def sanitize(row):
 
 def read_csv(csv_to_read):
     csv_to_dict = dict()
-    with open(csv_to_read, 'r', encoding='utf-8-sig') as file:
+    with open(csv_to_read, 'r') as file:
         csv_data = csv.DictReader(file)
         # Sanitize
         for row in csv_data:

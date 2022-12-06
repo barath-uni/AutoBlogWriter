@@ -2,7 +2,7 @@ from transformers import LEDTokenizer, LEDForConditionalGeneration
 import torch
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-tokenizer = LEDTokenizer.from_pretrained("hyesunyun/update-summarization-bart-large-longformer").to(device)
+tokenizer = LEDTokenizer.from_pretrained("hyesunyun/update-summarization-bart-large-longformer")
 model = LEDForConditionalGeneration.from_pretrained("hyesunyun/update-summarization-bart-large-longformer")
 model = model.to(device)
 
@@ -24,7 +24,7 @@ def DataSummarizer(content):
     global_attention_mask = torch.zeros_like(attention_mask)
     # put global attention on <s> token
     global_attention_mask[:, 0] = 1
-    predicted_summary_ids = model.generate(input_ids, attention_mask=attention_mask, global_attention_mask=global_attention_mask)
+    predicted_summary_ids = model.generate(input_ids.to(device), attention_mask=attention_mask.to(device), global_attention_mask=global_attention_mask.to(device))
     return tokenizer.batch_decode(predicted_summary_ids, skip_special_tokens=True)[0]
 
 

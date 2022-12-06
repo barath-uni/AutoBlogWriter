@@ -1,8 +1,8 @@
 import json
-from AutoBlogWriter.gptgenerator.datasummarizer import DataSummarizer
-from AutoBlogWriter.pipeline.review.ImageStripper import download_image
+from gptgenerator.datasummarizer import DataSummarizer
+from pipeline.review.ImageStripper import download_image
 from pathlib import Path
-from AutoBlogWriter.pipeline.imagegen.stableDiffusionImageGenerator import create_hero_image
+from pipeline.imagegen.stableDiffusionImageGenerator import create_hero_image
 POST_WRITE_PATH=Path("/home/barath/codespace/coolerssstack/_posts")
 LOCAL_IMAGE_PATH = Path("/home/barath/codespace/coolerssstack/public")
 RELATIVE_IMAGE_PATH = Path("assets/images/posts")

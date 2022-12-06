@@ -1,21 +1,23 @@
 import csv
 import re
-from AutoBlogWriter.gptgenerator.datasummarizer import DataSummarizer
+from gptgenerator.datasummarizer import DataSummarizer
 from pathlib import Path
 import torch
 import random
 import pycountry
 import json
+from utils.process_site_and_summarize import read_and_get_wordcount
 
-from AutoBlogWriter.utils.process_site_and_summarize import read_and_get_wordcount
 
 def random_conclusion(list=["In Summary", "Closing Thoughts", "Ultimately"]):
     return random.choice(list)
+
 
 POST_WRITE_PATH=Path("/home/barath/codespace/coolerssstack/_posts")
 SITEMAP_PATH=Path("/home/barath/codespace/coolerssstack/public/sitemap.xml")
 
 url_list = list()
+
 
 def sanitize(row):
     date_regex = re.compile(r'\d{1,2} \w+ \d{4}')
@@ -47,7 +49,7 @@ def sanitize(row):
 
 def read_csv(csv_to_read):
     csv_to_dict = dict()
-    with open(csv_to_read, 'r') as file:
+    with open(csv_to_read, 'r', encoding='utf-8-sig') as file:
         csv_data = csv.DictReader(file)
         # Sanitize
         for row in csv_data:
@@ -55,18 +57,21 @@ def read_csv(csv_to_read):
             print(row)
             if row:
                 if row['Parent'] in csv_to_dict:
-                    csv_to_dict[row['Parent']].append({'subheading': row['\ufeffPAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']})
+                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']})
                 else:
-                    csv_to_dict[row['Parent']] = [{'subheading': row['\ufeffPAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']}]
+                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']}]
     return csv_to_dict
+
 
 def clean_up_title(string):
     return re.sub(r'[-\|].*', '', string)
+
 
 def store_dict(value):
     with open('dict_for_processing.json', 'w') as f:
         json.dump(value, f)
 
+
 if __name__ == "__main__":
-    csv_val = read_csv("AutoBlogWriter/home_cooler_8.csv")
+    csv_val = read_csv("../../home_cooler_8.csv")
     store_dict(csv_val)

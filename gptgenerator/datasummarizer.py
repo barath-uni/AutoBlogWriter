@@ -24,6 +24,7 @@ def DataSummarizer(content):
     predicted_summary_ids = model.generate(input_ids, attention_mask=attention_mask, global_attention_mask=global_attention_mask)
     return tokenizer.batch_decode(predicted_summary_ids, skip_special_tokens=True)[0]
 
+
 if __name__ == "__main__":
     import sys
 

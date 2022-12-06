@@ -54,7 +54,6 @@ def read_csv(csv_to_read):
         # Sanitize
         for row in csv_data:
             row = sanitize(row)
-            print(row)
             if row:
                 if row['Parent'] in csv_to_dict:
                     csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']})

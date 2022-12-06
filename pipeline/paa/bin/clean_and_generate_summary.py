@@ -57,9 +57,9 @@ def read_csv(csv_to_read):
             print(row)
             if row:
                 if row['Parent'] in csv_to_dict:
-                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']})
+                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']})
                 else:
-                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']}]
+                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']}]
     return csv_to_dict
 
 

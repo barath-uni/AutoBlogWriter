@@ -1,7 +1,10 @@
 from transformers import LEDTokenizer, LEDForConditionalGeneration
 import torch
+device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+
 tokenizer = LEDTokenizer.from_pretrained("hyesunyun/update-summarization-bart-large-longformer")
 model = LEDForConditionalGeneration.from_pretrained("hyesunyun/update-summarization-bart-large-longformer")
+model = model.to(device)
 
 def DataSummarizer(content):
     '''

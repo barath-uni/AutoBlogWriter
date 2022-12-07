@@ -43,7 +43,7 @@ def sanitize(row):
             break
     if found:
         # Generate Summary for this key and add it to the row
-        row['SUMMARY'] = DataSummarizer(text)
+        # row['SUMMARY'] = DataSummarizer(text)
         return row
 
 

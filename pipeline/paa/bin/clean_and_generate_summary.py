@@ -46,7 +46,8 @@ def sanitize(row):
             return None
         print(f"THE WORD COUNT FOR {row['URL']} ARTICLE IS", word_count)
         # Don't allow duplicate URL rows, this affects the datasummarizer
-        url_list.append(row['URL'])    
+        url_list.append(row['URL'])
+        row['SUMMARY'] = DataSummarizer(text) 
         return row
 
 
@@ -59,9 +60,9 @@ def read_csv(csv_to_read):
             row = sanitize(row)
             if row:
                 if row['Parent'] in csv_to_dict:
-                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']})
+                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']})
                 else:
-                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']}]
+                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']}]
     return csv_to_dict
 
 

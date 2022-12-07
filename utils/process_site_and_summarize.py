@@ -8,7 +8,7 @@ def read_and_get_p_tags(url):
     print("URL:", url)
     # Send a request to the URL and retrieve the text
     try:
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=5)
         text = response.text
         soup = BeautifulSoup(text, "html.parser")
         paragraphs = soup.find_all("p")

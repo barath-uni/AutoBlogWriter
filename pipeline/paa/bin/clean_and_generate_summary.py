@@ -21,15 +21,6 @@ url_list = list()
 
 def sanitize(row):
     date_regex = re.compile(r'\d{1,2} \w+ \d{4}')
-    # Read the url and see the word count, if it is more than 2000 then don't continue
-    text, word_count = read_and_get_wordcount(row['URL'])
-    if word_count > 2000:
-        return None
-    print(f"THE WORD COUNT FOR {row['URL']} ARTICLE IS", word_count)
-    # Don't allow duplicate URL rows, this affects the datasummarizer
-    if row['URL'] in url_list:
-        return None
-    url_list.append(row['URL'])
     found = False
     for key in row:
         for country in pycountry.countries:
@@ -41,9 +32,21 @@ def sanitize(row):
         if 'air cool' in row[key].lower():            
             found=True
             break
+    
     if found:
         # Generate Summary for this key and add it to the row
         # row['SUMMARY'] = DataSummarizer(text)
+        # Read the url and see the word count, if it is more than 2000 then don't continue
+        if row['URL'] in url_list:
+            return None
+        text, word_count = read_and_get_wordcount(row['URL'])
+        if word_count == 0:
+            return None
+        if word_count > 2000:
+            return None
+        print(f"THE WORD COUNT FOR {row['URL']} ARTICLE IS", word_count)
+        # Don't allow duplicate URL rows, this affects the datasummarizer
+        url_list.append(row['URL'])    
         return row
 
 
@@ -56,9 +59,9 @@ def read_csv(csv_to_read):
             row = sanitize(row)
             if row:
                 if row['Parent'] in csv_to_dict:
-                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']})
+                    csv_to_dict[row['Parent']].append({'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']})
                 else:
-                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title'], 'SUMMARY':row['SUMMARY']}]
+                    csv_to_dict[row['Parent']] = [{'subheading': row['PAA Title'], 'text': row['Text'], 'URL': row['URL'], 'URL Title': row['URL Title']}]
     return csv_to_dict
 
 
@@ -72,5 +75,8 @@ def store_dict(value):
 
 
 if __name__ == "__main__":
+    import time
+    start_time = time.time()
     csv_val = read_csv("../../home_cooler_8.csv")
     store_dict(csv_val)
+    print("END TIME", time.time()-start_time)

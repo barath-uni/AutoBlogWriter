@@ -35,18 +35,14 @@ def format_text(word, sentiment):
 def format_the_para(text):
     text = " ".join(text)
     blob = TextBlob(text)
-    print(text)
     # Identify the most attractive words or phrases in the text.
     most_attractive = []
     for word in blob.words:
-        print("WORD", word)
-        print("SENTIMENT", TextBlob(word).sentiment)
         if TextBlob(word).sentiment.polarity > 0.4 or TextBlob(word).sentiment.subjectivity > 4:
             most_attractive.append(word)
     for phrase in blob.noun_phrases:
         if TextBlob(phrase).sentiment.polarity > 0.4 or TextBlob(phrase).sentiment.subjectivity > 0.4:
             most_attractive.append(phrase)
-    print(most_attractive)
     # Format the most attractive words or phrases with a randomly chosen formatting option.
     formatted_text = list()
     for t in text.split(" "):
@@ -55,5 +51,4 @@ def format_the_para(text):
             formatted_text.append(format_text(f, TextBlob(f).sentiment.subjectivity+TextBlob(f).sentiment.polarity))
         else:
             formatted_text.append(format_text(f, TextBlob(f).sentiment.subjectivity+TextBlob(f).sentiment.polarity))
-    print(formatted_text)
     return " ".join(formatted_text)

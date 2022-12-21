@@ -52,15 +52,15 @@ def generate_long_form_content(text):
   return value
 
 # Works well with gpt2
-def complete_sentences(text):
+def complete_sentences(text, temp=0.7, top_p=1, f_p=0.6, p_p=0.6, max_token=300):
   response = openai.Completion.create(
-    engine="text-davinci-002",
+    engine="text-davinci-001",
       prompt=text,
-      temperature=0.81,
-      max_tokens=400,
-      top_p=1,
-      frequency_penalty=0.96,
-      presence_penalty=0.53
+      temperature=temp,
+      max_tokens=max_token,
+      top_p=top_p,
+      frequency_penalty=f_p,
+      presence_penalty=p_p
   )
   value = split(response['choices'][0]['text'])
   return value

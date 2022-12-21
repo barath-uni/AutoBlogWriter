@@ -1,6 +1,7 @@
 # from pipeline.review.read_links import *
 # from pipeline.review.get_affliate_links import *
-from pipeline.paa.bin import clean_and_generate_summary
+# from pipeline.paa.bin import clean_and_generate_summary
+from gptgenerator.bin import gpt_blog_write
 # from gptgenerator.gpt_content_writer import write_an_article
 user = ""
 pwd = ""
@@ -24,9 +25,10 @@ pwd = ""
 
 
 if __name__ == "__main__":
-    csv_val = clean_and_generate_summary.read_csv("home_cooler_8.csv")
-    clean_and_generate_summary.store_dict(csv_val)
+    # csv_val = clean_and_generate_summary.read_csv("home_cooler_8.csv")
+    # clean_and_generate_summary.store_dict(csv_val)
     # generate_affiliate_articles(["Portable air cooler", "Window air cooler", "Mini air cooler", "Desert Air Cooler", "Silent Air Cooler"])
+    gpt_blog_write.read_and_create_gpt_content()
 
 """
 

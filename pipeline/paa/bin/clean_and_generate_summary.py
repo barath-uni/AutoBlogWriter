@@ -17,7 +17,17 @@ POST_WRITE_PATH=Path("/home/barath/codespace/coolerssstack/_posts")
 SITEMAP_PATH=Path("/home/barath/codespace/coolerssstack/public/sitemap.xml")
 
 url_list = list()
+negative_words = ["pc", "computer", "ac", "ton"]
 
+def deep_clean(row):
+    for key in row:
+        for country in pycountry.countries:
+            if country.name in row[key]:
+                return None
+        # Negative words
+        for word in negative_words:
+            if word.lower() in key:
+                return None
 
 def sanitize(row):
     date_regex = re.compile(r'\d{1,2} \w+ \d{4}')

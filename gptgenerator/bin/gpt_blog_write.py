@@ -205,9 +205,12 @@ def read_and_create_gpt_content():
         logging.info('Sleeping So that YOU CAN INVESTIGATE!')
         print('Sleeping So that YOU CAN INVESTIGATE!')
 
-def read_json_and_create_html():
-    with open('')
-    json_dict = 
+def convert_json_to_html(json_dict):
+    html = ""
+    for key, value in json_dict.items():
+        html += "<h2>" + key + "</h2>" +"\n"
+        html += "<p>" + value + "</p>" + "\n"
+    return html
 
 if __name__ == "__main__":
     

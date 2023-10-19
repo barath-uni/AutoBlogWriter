@@ -7,6 +7,7 @@ import sys
 import logging
 import re
 import json
+from pipeline.kwresearch import generate_long_tails
 
 logging.basicConfig(filename="log.txt",level=logging.INFO)
 transformers_logger = logging.getLogger("transformers")
@@ -107,7 +108,9 @@ def split_title_paragraph(text, titles):
 
 def initialize_with_topic_outline(MAIN_TOPIC, TOPIC_TITLE, WORD_COUNT, TOPIC_DESCRIPTION, PARAGRAPH_COUNT):
     START_SEQUENCE=f"""
-I need an expert to explain {MAIN_TOPIC}.
+I want you to act as an expert blog writer on the topic {MAIN_TOPIC}. You will write exciting, catchy, informational blog article 
+for the given topic, and create a persuasive piece of work that is both informative and engaging. 
+
 What information do you need from me to generate a fun, in-depth explaining article?
 
 To generate an example article, you will need to provide:
@@ -178,11 +181,11 @@ def main(file_name, main_topic, title, desc):
         TOPIC_DESCRIPTION=desc, 
         PARAGRAPH_COUNT=7
     )
-    text = start_sequence+start_text+"Write a detailed section for the following paragraph \n\n"
+    text = start_sequence+start_text+"Write an engaging, detailed section for the following paragraph \n\n"
     title_paragraph_dict = {}
     # Util to parse the subheading and paragraph separately
     # Feed the text back in -> add Introduction\n -> Ask one of the PAA Question
-
+    print(titles)
     for title in titles:
         paragraph = get_paragraph(text, title)
         title_paragraph_dict[title] = paragraph
@@ -194,16 +197,27 @@ def main(file_name, main_topic, title, desc):
 def read_and_create_gpt_content():
     import time
     list_of_dict=list(dict())
-    with open('/home/barath/codespace/blogwriter/AutoBlogWriter/topic_title_maintopic.csv', 'r') as file:
+    with open('/home/barath/codespace/blogwriter/AutoBlogWriter/maintopic - topic_title_maintopic.csv', 'r') as file:
         csv_data = csv.DictReader(file)
         for row in csv_data:
             list_of_dict.append({'file_name':row['TITLE'], 'main_topic':row['MAIN TOPIC'], 'title':row['TOPIC TITLE'], 'desc':row['TOPIC DESCRIPTION']})
+    processed_files=list()
+    print("****************** LIST OF DICT ****************")
+    print(list_of_dict)
     # Loop through the list and call main()
     for val in list_of_dict:
-        main(val['file_name'], val['main_topic'], val['title'], val['desc'])
-        time.sleep(60)
-        logging.info('Sleeping So that YOU CAN INVESTIGATE!')
+        if val['desc'] != '':
+            desc = val['desc']
+        else:
+            ans = generate_long_tails.generate_paa_title_answers([val['main_topic']])
+            ans = ans[0][val['main_topic']]['answer']
+            desc = ".".join(ans)
+        main(val['file_name'], val['main_topic'], val['title'], desc)
+        processed_files.append(val['file_name'])
+        time.sleep(120)
+        logging.info(f"Sleeping So that YOU CAN INVESTIGATE! - {val['file_name']}")
         print('Sleeping So that YOU CAN INVESTIGATE!')
+    return processed_files
 
 def convert_json_to_html(json_dict):
     html = ""

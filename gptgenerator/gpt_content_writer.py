@@ -54,7 +54,7 @@ def generate_long_form_content(text):
 # Works well with gpt2
 def complete_sentences(text, temp=0.7, top_p=1, f_p=0.6, p_p=0.6, max_token=300):
   response = openai.Completion.create(
-    engine="text-davinci-001",
+    engine="text-davinci-003",
       prompt=text,
       temperature=temp,
       max_tokens=max_token,
@@ -111,7 +111,7 @@ def convert_question_to_hook(question):
 
 def generateBlogTopics(prompt1):
     response = openai.Completion.create(
-      engine="text-davinci-001",
+      engine="text-davinci-003",
       prompt="Generate blog topics on: {}. \n \n 1.  ".format(prompt1),
       temperature=0.7,
       max_tokens=100,

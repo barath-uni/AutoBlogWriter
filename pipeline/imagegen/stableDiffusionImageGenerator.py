@@ -17,8 +17,8 @@ RELATIVE_IMAGE_PATH = Path("assets/images/posts/hero")
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
-def create_hero_image(prompt:str, height=600, width=1048):
-    pipe = StableDiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4", use_auth_token=my_token)
+def create_hero_image(prompt:str, height=256, width=256):
+    pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5")
     pipe.to("cpu")
     image = pipe(prompt, height=height, width=width).images[0]
     id = id_generator()

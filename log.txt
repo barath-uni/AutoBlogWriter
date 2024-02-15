@@ -1,0 +1,122 @@
+Does a swamp cooler have to be on the roof?	how to install a swamp cooler	The roof is usually the best place to install a swamp cooler. By putting it on the roof, it's a lot easier to connect it to your duct system and therefore pump cool air throughout your house. 28 Dec 2021	
+Does a swamp cooler need to vent outside?	how to install a swamp cooler	Evaporative coolers don't require venting like portable ACs, but the air forced out will still require an exit path in order to ensure sufficient cooling (this can usually be accomplished with an open door or window). 1 May 2019	
+Do swamp coolers actually cool the air?	how to install a swamp cooler	   Evaporative coolers, also called swamp coolers, rely on this principle. By passing outdoor air over water-saturated pads, the water in the pads evaporate, reducing the air temperature by 15°- to 40°F-before it is directed into the home.	
+Does a swamp cooler have to be in a window?	how to install a swamp cooler	   A Swamp Cooler Will Require Open Windows     There are porous surfaces which allow air to flow through and a fan that actually pulls the air in. The porous sides of the swamp cooler have a pad that has water-absorbing material inside. In order for the unit to work properly, the pads should be damp, not soaked. 14 Nov 2016	
+Is it OK to run a swamp cooler all day?	Does a swamp cooler have to be on the roof?	During the hottest part of the day, it is not ideal to run your swamp cooler. You will only be able to lower the temperature to a certain extent. But, if it is exceptionally hot outside, running the swamp cooler will be absolutely essential for comfort. Evening hours are a great time to run the swamp cooler.	
+What are the cons of a swamp cooler?	Does a swamp cooler have to be on the roof?	The Cons of Swamp Coolers They require continuous maintenance to function, such as changing filters which costs money (sometimes hundreds of dollars!) Needed replacement filters add to the Total Cost of Ownership. As filters become dirty, the efficiency and effectiveness of the cooler decreases. More items... • 7 Sept 2021	
+What is the difference between a swamp cooler and an evaporative cooler?	Does a swamp cooler need to vent outside?	There is no true difference between these two terms. “Evaporative cooler” is a technically accurate name that describes how the device functions. “Swamp cooler” is a somewhat derogative slang term that describes what can happen to an evaporative cooler if you don't take proper care of it.	
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=4006 request_id=d851af6b098d61ae7ab274e1cb54e5ee response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=441 request_id=faf0cb29bb2ce5110c8a1310ee5848b0 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=628 request_id=c20d94cc3d7eadde548675f6b92395fc response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=915 request_id=ae8eb97abbe6052db5a13cdadad1f063 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=837 request_id=3de22f90760574b0b4c4025a6789a1e7 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1657 request_id=055872bc9ed8f7adb241e057df709c44 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1264 request_id=e3d87b282cd8de162885e9ec3388a81a response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - difference_desert_portable
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1463 request_id=41fc38bf42bcc03cfb2e02a7a216d789 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1698 request_id=af8e0f11276c78e7cbb081c5726e593d response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=2273 request_id=9d8d9b80f43a067692d59e792d3dd33e response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1228 request_id=c4ada9abc5b5c307242a9b9c8f0a2102 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1568 request_id=af86f9484755190fce1362911d262034 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=2074 request_id=1127a2a29ea3eb8373ad7d81ec19e5fa response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=949 request_id=5f45ccd7931c072fe2f7168e05981f8f response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=695 request_id=0d19d069c19b8199e3444a513cf91741 response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - swamp_air_cooler
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1498 request_id=4d62db6930322980e55d189d4c0ce831 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1390 request_id=3b8d7c2bfc9f88e339faf48656b815e6 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1807 request_id=d5969277ce55b5abb93c925681c25c90 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=906 request_id=11083afcde22d2bdf81213ae99502e60 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=2274 request_id=c6821c314ac7519cd64042a50234a1e8 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1921 request_id=c24c30059ee865e2012c11324603f18d response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-001/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-001/completions processing_ms=1569 request_id=80d8f984f164101d88cc259e0972b3c6 response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - battery_operated_aircooler
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=12535 request_id=351557fc1b462d74b1d3f5a12ede49b7 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=22467 request_id=40f68a116be92231c30dae6756fb46a9 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=8221 request_id=7fae3dd5a98855dd29e2c8ee89c2efaa response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11992 request_id=67f60676e0fef95156a5178aafdf63bf response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=10708 request_id=de132764e273681555d3897a31b660be response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=12538 request_id=cde9a08aa941fe4df0ca97c4603321a1 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=9202 request_id=230e786009e6eeb7add81d372aa1eabe response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=3526 request_id=d9f8ff1804d2a4ec15a6508a687a0f70 response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - humidifier_or_purifier
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=12545 request_id=9751a07d09e439e864eec1cd79ec57d7 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=12556 request_id=67a4bdba889740dc6efce54769f9d839 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=5360 request_id=e2c625f1cf3f725b140439dd1fe527e2 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=6094 request_id=409544efa46219e8039891911f54e0c2 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=5562 request_id=7f597168aa7efcc3cdb8adab7a6ed330 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=21879 request_id=1c50113082f38554271dfbb26542a572 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=10745 request_id=c64fa6e4d86ee8480855a65f29a2be93 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=4558 request_id=f4cdf534642c843658869ef8f1039e4f response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - hepa_filter_last
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=10798 request_id=1f9b9ae32327e62c9a54bcf9325960c7 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11342 request_id=90408346f0e0010472a56eb68d9a7b41 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=24193 request_id=d3eb089fca10a9a80b23c0b56b20e936 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11142 request_id=e2fe32be6070bbc272c22eb0c0783a45 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11620 request_id=cc1f04499846b9fb3cf05107db9ab437 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=21753 request_id=1cd40d8bb1ebc16578ce238129d2f01f response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=6200 request_id=ac0fca3de473c2f2d4745b0c48553dcd response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=5110 request_id=49d4d88c2100e2661a18dae3bf2a5d45 response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - air_purifier_last
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11831 request_id=da2e24d92e845c28731281327ea7d6fa response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11371 request_id=9db73ebff51e75578c5f3a6c4add91c5 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=12465 request_id=9e30f46a30178ef407feaba21ec245bf response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=23322 request_id=4a813aef533a6c97a563e78ce29d7056 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=11848 request_id=4607528fe2c80f8cc80ccc1bedff5f69 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=22415 request_id=4a1721a66edf0c2dd6b2a34e21c9b626 response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=7059 request_id=6bbf19a71ed2340babf5bbfe34dd2dbc response_code=200
+INFO:openai:message='Request to OpenAI API' method=post path=https://api.openai.com/v1/engines/text-davinci-003/completions
+INFO:openai:message='OpenAI API response' path=https://api.openai.com/v1/engines/text-davinci-003/completions processing_ms=3813 request_id=c6896158b13b0f21f738a7c9f60ffcd1 response_code=200
+INFO:root:Sleeping So that YOU CAN INVESTIGATE! - voc_filter
